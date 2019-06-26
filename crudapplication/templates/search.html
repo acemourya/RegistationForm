@@ -1,0 +1,60 @@
+<html>
+ <head>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ </head>
+ <body>
+   <div class="container">
+       <h1>Search student Informtion</h1>
+       <form method="post" action="/search/">
+           {% csrf_token %}
+           <div class="form-group">
+               <div class="col-lg-5">
+                   <input type="text" name="srh" class="form-content" placeholder="enter name or city">
+               </div>
+               <label class="col-lg-2">
+                   <button type="submit" class="btn btn-danger">Search</button>
+               </label>
+           </div>
+       </form><br><br>
+       <div>
+       {% if messages %}
+         <ul class="message">
+             {% for k in messages %}
+             <li style="color: red">{{ k }}</li>
+             {% endfor %}
+         </ul>
+       {% endif %}
+       </div><br>
+
+        <div style="color:blur">
+
+            {% if sr %}
+            {% for k in sr %}
+            <table border="0px" width="360px">
+                <tr>
+                    <td>ID</td><hr>
+                    <td>{{ k.eid}}</td>
+                </tr>
+                <tr>
+                    <td>Name</td><hr>
+                    <td>{{ k.ename}}</td>
+                </tr>
+                <tr>
+                    <td>Email ID</td><hr>
+                    <td>{{ k.email}}</td>
+                </tr>
+                <tr>
+                    <td>Contact</td><hr>
+                    <td>{{ k.econtact}}</td>
+                </tr>
+
+            </table>
+            <hr>
+            {% endfor %}
+            {% endif %}
+
+
+        </div>
+   </div>
+ </body>
+</html>

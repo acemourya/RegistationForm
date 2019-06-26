@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from crudapplication import views
+from django.conf.urls import url
+from crudapplication.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +26,8 @@ urlpatterns = [
     path('edit/<int:id>', views.edit),
     path('update/<int:id>', views.update),
     path('delete/<int:id>', views.delete),
+    url(r'^search/$', search),
+
+
 
 ]
